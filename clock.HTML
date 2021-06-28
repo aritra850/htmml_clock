@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLOCK</title>
+    <style>
+        body {
+            background-image: url(space.jpg);
+            padding: 80px;
+        }
+        
+        h1 {
+            color: rgb(255, 0, 170);
+            text-align: center;
+        }
+        
+        u {
+            color: gold;
+            text-decoration: none;
+        }
+        
+        #time {
+            color: chartreuse;
+            text-align: center;
+            font-size: 60px;
+        }
+        
+        #date {
+            color: aquamarine;
+            text-align: center;
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>-: CURRENT TIME & DATE :- </h1>
+    <h2 id="time"></h2>
+    <h3 id="date"></h3>
+    <h1>-: PRESENTED BY <u>ARITRA MONDAL</u> :-</h1>
+</body>
+<script>
+    var obj;
+    var timeobj;
+    var dateobj;
+    var dayobj;
+    var p;
+    var hourobj;
+    setInterval(() => {
+
+        obj = new Date();
+
+        if (obj.getHours() > 12) {
+            p = "PM";
+            hourobj = obj.getHours() % 12;
+        } else {
+            if (obj.getHours() < 12)
+                p = "AM";
+            else
+                p = "PM";
+            hourobj = obj.getHours();
+        }
+
+        timeobj = hourobj + ":" + obj.getMinutes() + ":" + obj.getSeconds() + "   " + p;
+        dateobj = obj.getDate() + "/" + (obj.getMonth() + 1) + "/" + obj.getFullYear();
+        if (obj.getDay() == 0)
+            dayobj = "SUNDAY";
+        else if (obj.getDay() == 1)
+            dayobj = "MONDAY";
+        else if (obj.getDay() == 2)
+            dayobj = "TUESDAY";
+        else if (obj.getDay() == 3)
+            dayobj = "WEDNESDAY";
+        else if (obj.getDay() == 4)
+            dayobj = "THURSDAY";
+        else if (obj.getDay() == 5)
+            dayobj = "FRIDAY";
+        else if (obj.getDay() == 6)
+            dayobj = "SATURDAY";
+
+
+        document.getElementById("time").innerHTML = timeobj;
+        document.getElementById("date").innerHTML = dayobj + "-" + dateobj;
+
+    }, 1)
+</script>
+
+</html>
